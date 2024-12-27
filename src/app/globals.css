@@ -3,19 +3,104 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+html {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+body > div[data-overlay-container='true'] {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+*::-webkit-media-controls {
+    display: none !important;
+}
+*::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+:fullscreen.custom-video-controls {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+}
+
+.video-controls-container div {
+    transition: all ease-in 1s;
+}
+div.custom-video-controls {
+    transition: all ease-in 250ms;
+}
+.video-controls-hidden {
+    opacity: 0;
+    background-color: transparent;
+}
+.overlay-visible {
+    opacity: 0.5;
+    background-image: (to top, black, transparent 50%),
+        linear-gradient(45deg, rgb(0, 0, 0), rgba(0, 0, 0, 0));
+}
+.video-controls-visible {
+    opacity: 1;
+}
+
+.movie-banner {
+    transition: opacity 1s cubic-bezier(0.54, 0.33, 1, 0.96);
+}
+.movie-banner-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transition: opacity 8s cubic-bezier(0.54, 0.33, 1, 0.96);
+    background-position: 50%;
+}
+
+.movie-banner-controls {
+    transition: opacity 10s cubic-bezier(0.54, 0.33, 1, 0.96);
+    z-index: 30;
+}
+
+.movie-banner-controls:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: inherit;
+    z-index: 20;
+
+    background: radial-gradient(circle at -75%, #000 45%, #0000 100%);
+}
+
+@media only screen and (min-width: 1024px) {
+    .movie-banner-controls::after {
+        left: 39%;
+    }
 }
