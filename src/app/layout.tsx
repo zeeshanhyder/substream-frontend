@@ -1,20 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Afacad_Flux, Poppins } from 'next/font/google'
 import { Providers } from './providers'
 import type { CSSProperties } from 'react'
-
-const poppins = Poppins({
-    variable: '--font-poppins',
-    subsets: ['latin'],
-    weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
-})
-
-const afacad = Afacad_Flux({
-    variable: '--font-poppins',
-    subsets: ['latin'],
-    weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
-})
+import { sourcecodePro, afacad } from './fonts'
 
 export const metadata: Metadata = {
     title: 'Homeflix',
@@ -44,8 +32,9 @@ export default function RootLayout({
                 />
             </head>
             <body
-                className={`${poppins.variable} ${afacad.variable} antialiased flex-grow flex flex-col min-h-screen`}
+                className={`${sourcecodePro.variable} ${afacad.variable} antialiased flex-grow flex flex-col min-h-screen bg-black max-w-[4000px]`}
                 suppressHydrationWarning={true}
+                style={{ margin: '0 auto' }}
             >
                 <Providers>{children}</Providers>
             </body>

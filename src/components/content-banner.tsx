@@ -1,8 +1,14 @@
-import { Button, ButtonProps } from '@nextui-org/react'
-import { ArrowCounterClockwise, Eject, Play } from '@phosphor-icons/react'
+import { Button, ButtonProps, Link as LinkButton } from '@nextui-org/react'
+import {
+    ArrowCounterClockwise,
+    ArrowLeft,
+    Eject,
+    Play,
+} from '@phosphor-icons/react'
 import Sheet from './sheet'
 import { useEffect, useState, useRef } from 'react'
 import type { MediaControlProps } from './media-player/use-media-player-controls'
+import Link from 'next/link'
 
 type MovieBannerProps = MediaControlProps & {
     src: string
@@ -53,7 +59,10 @@ const StartOverButton = ({
     )
 }
 
-export default function MovieBanner({ src, mediaControls }: MovieBannerProps) {
+export default function ContentBanner({
+    src,
+    mediaControls,
+}: MovieBannerProps) {
     const [hideOverlay, setOverlayHidden] = useState(false)
     const [fadeOut, setFadeOut] = useState(false)
     const fadeOutTriggerTimer = useRef<NodeJS.Timeout | null>(null)
@@ -116,7 +125,13 @@ export default function MovieBanner({ src, mediaControls }: MovieBannerProps) {
                 className={`flex flex-row grow w-full movie-banner-controls absolute w-full h-full z-40 align-center ${hideOverlay ? 'hidden' : ''} ${fadeOut ? 'opacity-0' : ''}`}
             >
                 <div className="flex flex-col grow pl-5 pr-5 lg:pl-20 lg:max-w-[40%] bg-black">
-                    <Sheet className="flex flex-col grow min-h-[33.3%]" />
+                    <Sheet className="flex flex-col grow min-h-[33.3%]">
+                        <div className="flex flex-row items-center mt-10">
+                            <Link href="/">
+                                <ArrowLeft />
+                            </Link>
+                        </div>
+                    </Sheet>
                     <Sheet className="flex flex-col grow min-h-[33.3%] justify-center">
                         <h3 className="text-4xl font-extrabold">
                             Big Buck Bunny

@@ -2,9 +2,9 @@
 
 import Hls from 'hls.js'
 import Script from 'next/script'
+import ContentBanner from '@/components/content-banner'
 import { Ref, useRef } from 'react'
 import { useMediaPlayerControls } from './use-media-player-controls'
-import MovieBanner from '@/components/movie-banner'
 import { MediaPlayerControls } from './media-player-controls'
 
 type MediaPlayerProps = {
@@ -64,7 +64,7 @@ export default function MediaPlayer({
                 </video>
                 <MediaPlayerControls mediaControls={mediaControls} />
             </div>
-            <MovieBanner mediaControls={mediaControls} src={thumbnailSrc} />
+            <ContentBanner mediaControls={mediaControls} src={thumbnailSrc} />
         </div>
     )
 }

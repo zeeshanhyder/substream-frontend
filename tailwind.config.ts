@@ -14,9 +14,10 @@ export default {
             md: '768px',
             lg: '976px',
             xl: '1440px',
+            '2xl': '3840px',
         },
         fontFamily: {
-            display: '"Afacad Flux", "Poppins", ui-sans',
+            display: '"Afacad Flux", "Source Code Pro", ui-sans',
         },
         extend: {
             spacing: {
@@ -25,6 +26,18 @@ export default {
             },
             borderRadius: {
                 '4xl': '2rem',
+            },
+            borderColor: {
+                '50': '#fafafa',
+                '100': '#f2f2f3',
+                '200': '#ebebec',
+                '300': '#e3e3e6',
+                '400': '#dcdcdf',
+                '500': '#d4d4d8',
+                '600': '#afafb2',
+                '700': '#8a8a8c',
+                '800': '#656567',
+                '900': '#404041',
             },
         },
     },

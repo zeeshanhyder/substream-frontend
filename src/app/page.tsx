@@ -1,5 +1,13 @@
-export default function Home() {
+import { getLibrary, getNewlyAdded } from '@/api'
+import Landing from '@/components/landing'
+
+export default async function Home() {
+    const newlyReleased = await getNewlyAdded()
+    const myLibrary = await getLibrary()
     return (
-        <div className="flex flex-col grow grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20"></div>
+        <Landing
+            newlyReleased={newlyReleased.data}
+            myLibrary={myLibrary.data}
+        />
     )
 }
