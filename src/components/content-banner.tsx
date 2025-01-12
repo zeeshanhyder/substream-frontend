@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Link as LinkButton } from '@nextui-org/react'
+import { Button, ButtonProps } from '@nextui-org/react'
 import {
     ArrowCounterClockwise,
     ArrowLeft,
