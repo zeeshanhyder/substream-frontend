@@ -14,10 +14,10 @@
         "format": "prettier --write --ignore-unknown \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\""
     },
     "dependencies": {
+        "@eyevinn/web-player-core": "^0.15.3",
         "@nextui-org/react": "^2.6.8",
         "@phosphor-icons/react": "^2.1.7",
         "framer-motion": "^11.15.0",
-        "hls.js": "^1.5.18",
         "next": "15.1.1",
         "react": "^19.0.0",
         "react-dom": "^19.0.0"
