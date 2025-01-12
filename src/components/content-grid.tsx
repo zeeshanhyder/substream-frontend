@@ -1,7 +1,6 @@
 import { MediaContent } from '@/api'
 import { CaretRight } from '@phosphor-icons/react/dist/ssr'
 import { ContentCard } from './content-card'
-import { RefObject } from 'react'
 
 export default function ContentGrid({
     title,
