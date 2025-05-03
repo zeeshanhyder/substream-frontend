@@ -24,7 +24,7 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en" className="dark" style={htmlStyle}>
+        <html lang="en" className="light" style={htmlStyle}>
             <head>
                 <meta
                     name="viewport"
@@ -32,7 +32,7 @@ export default function RootLayout({
                 />
             </head>
             <body
-                className={`${sourcecodePro.variable} ${afacad.variable} antialiased flex-grow flex flex-col min-h-screen bg-black max-w-[4000px]`}
+                className={`${sourcecodePro.variable} ${afacad.variable} antialiased flex-grow flex flex-col min-h-screen bg-background max-w-[4000px]`}
                 suppressHydrationWarning={true}
                 style={{ margin: '0 auto' }}
             >

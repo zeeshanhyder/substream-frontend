@@ -1,23 +1,28 @@
 'use client'
 
-import { NextUIProvider } from '@nextui-org/react'
+import { UserSessionStoreProvider } from '@/providers/user-session-provider'
+import { HeroUIProvider } from '@heroui/react'
+import { ToastProvider } from '@heroui/toast'
 import { IconContext } from '@phosphor-icons/react'
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return (
-        <NextUIProvider>
+        <HeroUIProvider>
+            <ToastProvider placement="top-center" />
             <IconContext
                 value={{
-                    color: '#e5e7eb',
+                    color: '#3a3730', // Warm dark brown for icons
                     size: 32,
                     weight: 'bold',
                     mirrored: false,
                 }}
             >
-                <main className="flex flex-col grow dark text-foreground bg-background">
-                    {children}
-                </main>
+                <UserSessionStoreProvider>
+                    <main className="flex flex-col grow light text-foreground bg-background">
+                        {children}
+                    </main>
+                </UserSessionStoreProvider>
             </IconContext>
-        </NextUIProvider>
+        </HeroUIProvider>
     )
 }
