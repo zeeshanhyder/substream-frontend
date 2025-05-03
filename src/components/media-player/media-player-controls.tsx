@@ -45,7 +45,7 @@ export const MediaPlayerControls = ({ mediaControls }: MediaControlProps) => {
     return (
         <div className="overlay flex flex-col grow w-full video-controls-container">
             <Overlay
-                className={`${addMediaControlVisibilityClass('overlay')} absolute top-0 right-0 left-0 bottom-0 z-11 bg-gradient-to-t from-black to-transparent`}
+                className={`${addMediaControlVisibilityClass('overlay')} absolute top-0 right-0 left-0 bottom-0 z-11 bg-linear-to-t from-black to-transparent`}
             />
             <div
                 onMouseOver={throttle(showControls, 1000)}
@@ -53,7 +53,7 @@ export const MediaPlayerControls = ({ mediaControls }: MediaControlProps) => {
                 className={`flex flex-col relative z-12 grow w-full justify-center custom-video-controls ${addMediaControlVisibilityClass('mediaControls')}`}
             >
                 <Sheet className="flex flex-col grow min-h-[33.3%]">
-                    <header className="flex items-center justify-between h-20 px-6 py-16 bg-gradient-to-b from-gray-900 to-transparent absolute left-0 right-0 z-10">
+                    <header className="flex items-center justify-between h-20 px-6 py-16 bg-linear-to-b from-gray-900 to-transparent absolute left-0 right-0 z-10">
                         <div className="mx-2 flex grow flex-col justify-center">
                             <h3 className="text-xl font-bold">{title}</h3>
                             <h5 className="text-lg font-semibold">

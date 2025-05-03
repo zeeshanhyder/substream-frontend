@@ -156,7 +156,7 @@ export default function ContentBanner({
                     <Sheet className="flex flex-col grow min-h-[33.3%]" />
                 </div>
                 <div
-                    className={`flex flex-col bg-black grow lg:max-w-[60%] lg:min-w-[60%] bg-cover movie-banner-overlay absolute w-full h-full z-[20] ${hideOverlay ? 'hidden' : ''} ${fadeOut ? 'opacity-0' : ''}`}
+                    className={`flex flex-col bg-black grow lg:max-w-[60%] lg:min-w-[60%] bg-cover movie-banner-overlay absolute w-full h-full z-20 ${hideOverlay ? 'hidden' : ''} ${fadeOut ? 'opacity-0' : ''}`}
                     style={{ backgroundImage: `url(${src})` }}
                 >
                     <video

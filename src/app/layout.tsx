@@ -32,7 +32,7 @@ export default function RootLayout({
                 />
             </head>
             <body
-                className={`${sourcecodePro.variable} ${afacad.variable} antialiased flex-grow flex flex-col min-h-screen bg-background max-w-[4000px]`}
+                className={`${sourcecodePro.variable} ${afacad.variable} antialiased grow flex flex-col min-h-screen bg-background max-w-[4000px]`}
                 suppressHydrationWarning={true}
                 style={{ margin: '0 auto' }}
             >
