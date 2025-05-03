@@ -15,7 +15,7 @@ export default function Landing({
     return (
         <div className="flex flex-col overflow-x-hidden sticky">
             <Hero featuredContent={newlyReleased} />
-            <div className="w-[100%] overflow-hidden sm:p-20 sm:pt-0 relative sm:mt-[-30vh] xl:mt-[-20vh] z-[20] collection">
+            <div className="w-[100%] overflow-hidden sm:p-20 sm:pt-0 relative sm:mt-[-30vh] xl:mt-[-20vh] z-20 collection">
                 {/* <ContuinueWatching /> */}
                 <ContentList title={'Newly Added'} content={newlyReleased} />
                 <ContentGrid

@@ -6,7 +6,7 @@ type HeaderProps = {
 }
 export default function Header({ title, subtitle }: HeaderProps) {
     return (
-        <header className="flex items-center justify-between h-20 px-6 bg-gradient-to-b from-gray-900 to-transparent absolute left-0 right-0 z-10">
+        <header className="flex items-center justify-between h-20 px-6 bg-linear-to-b from-gray-900 to-transparent absolute left-0 right-0 z-10">
             <div className="min-w-[48px]">
                 <ArrowLeft />
             </div>
