@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@nextui-org/react'
+import { Button, ButtonProps } from "@heroui/react"
 import {
     ArrowCounterClockwise,
     ArrowLeft,
@@ -64,18 +64,18 @@ export default function ContentBanner({
     mediaControls,
 }: MovieBannerProps) {
     const [hideOverlay, setOverlayHidden] = useState(false)
-    const [fadeOut, setFadeOut] = useState(false)
+    const [fadeOut] = useState(false)
     const fadeOutTriggerTimer = useRef<NodeJS.Timeout | null>(null)
     const hideOverlayTriggerTimer = useRef<NodeJS.Timeout | null>(null)
 
-    const startFadeOutChoreography = () => {
-        fadeOutTriggerTimer.current = setTimeout(() => {
-            mediaControls.play()
-            setTimeout(() => {
-                setFadeOut(true)
-            }, 5000)
-        }, 10000)
-    }
+    // const startFadeOutChoreography = () => {
+    //     fadeOutTriggerTimer.current = setTimeout(() => {
+    //         mediaControls.play()
+    //         setTimeout(() => {
+    //             setFadeOut(true)
+    //         }, 5000)
+    //     }, 10000)
+    // }
 
     const startHideOverlayChoreography = () => {
         if (fadeOut) {

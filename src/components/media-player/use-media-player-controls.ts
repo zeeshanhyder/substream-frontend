@@ -156,10 +156,6 @@ export const useMediaPlayerControls = (
         } else {
             if (targetElement?.requestFullscreen) {
                 targetElement.requestFullscreen()
-            } else {
-                if (mediaPlayer.current.webkitRequestFullscreen) {
-                    mediaPlayer.current.webkitRequestFullscreen()
-                }
             }
         }
     }

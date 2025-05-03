@@ -19,6 +19,7 @@
             }
         ],
         "paths": {
+            "@server/*": ["../hf-media-processor/src/*"],
             "@/*": ["./src/*"]
         }
     },

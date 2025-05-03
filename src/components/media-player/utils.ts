@@ -1,9 +1,9 @@
-export const throttle = (func: Function, delay: number) => {
+export const throttle = (func: <T>(args: T) => void, delay: number) => {
     let lastCall = 0
-    return function (...args: any) {
+    return function <U extends unknown[]>(...args: U) {
         const now = new Date().getTime()
         if (now - lastCall >= delay) {
-            func(...args)
+            func(args)
             lastCall = now
         }
     }

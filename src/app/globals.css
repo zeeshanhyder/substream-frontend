@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #f8f7f2; /* Eggshell white */
+    --foreground: #3a3730; /* Warm dark brown */
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
+        --background: #f8f7f2; /* Keep eggshell even in dark mode preference */
+        --foreground: #3a3730;
     }
 }
 
@@ -30,6 +30,10 @@ body {
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
+}
+
+body * {
+    user-select: none;
 }
 
 body > div[data-overlay-container='true'] {
