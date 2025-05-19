@@ -1,6 +1,6 @@
 # Substream Frontend
 
-S is the frontend application for the Substream Media Processor, a comprehensive media management system designed to process, organize, and stream your media library. This frontend provides a user-friendly interface to interact with the media managed by the Substream backend.
+Substream Frontend is the frontend application for the Substream Media Processor, a comprehensive media management system designed to process, organize, and stream your media library. This frontend provides a user-friendly interface to interact with the media managed by the Substream backend.
 
 ## Tech Stack
 
@@ -17,7 +17,7 @@ Before you begin, ensure you have the following installed and running:
 
 1.  **Node.js**: Minimum version 22. You can download it from [nodejs.org](https://nodejs.org/).
 2.  **Substream Media Processor Backend**: This frontend relies on the Substream backend for all media processing and data. Make sure it's running before starting this application.
-    - Backend Repository: [https://github.com/zeeshanhyder/Substream](https://github.com/zeeshanhyder/Substream)
+    - Backend Repository: [https://github.com/zeeshanhyder/substream](https://github.com/zeeshanhyder/substream)
 
 ## Getting Started
 
