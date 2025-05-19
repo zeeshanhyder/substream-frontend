@@ -21,13 +21,13 @@ Before you begin, ensure you have the following installed and running:
 
 ## Getting Started
 
-Follow these steps to get the S frontend up and running on your local machine:
+Follow these steps to get the Substream frontend up and running on your local machine:
 
 1.  **Clone the repository (if you haven't already):**
 
     ```bash
     git clone <your-repository-url>
-    cd S-frontend
+    cd substream-frontend
     ```
 
 2.  **Install dependencies:**
