@@ -1,6 +1,6 @@
 {
-    "name": "homeflix-frontend",
-    "version": "0.1.0",
+    "name": "substream-frontend",
+    "version": "1.0.0-beta",
     "private": true,
     "engines": {
         "node": "22",
