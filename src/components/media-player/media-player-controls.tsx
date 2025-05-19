@@ -7,14 +7,23 @@ import MediaFastForwardButton from './components/fast-forward-button'
 import MediaPlayerFullScreenButton from './components/fullscreen-button'
 import MediaPlayButton from './components/play-button'
 import MediaRewindButton from './components/rewind-button'
-import MediaPlayerSubtitleButton from './components/subtitles-button'
 import MediaPlayerVolumeButton from './components/volume-control-button'
 import {
     MediaControlProps,
     MediaControlsVisibility,
+    TitleMetadata,
 } from './use-media-player-controls'
+import { Button } from '@heroui/react'
+import Link from 'next/link'
+import { ArrowLeft } from '@phosphor-icons/react'
 
-export const MediaPlayerControls = ({ mediaControls }: MediaControlProps) => {
+export const MediaPlayerControls = ({
+    mediaControls,
+    title,
+    backLink,
+    subtext,
+    type,
+}: MediaControlProps & TitleMetadata) => {
     const {
         toggleMediaState,
         toggleFullScreen,
@@ -39,8 +48,7 @@ export const MediaPlayerControls = ({ mediaControls }: MediaControlProps) => {
         return visibilityShownClass
     }
 
-    const title = 'Big Buck Bunny'
-    const subtitle = 'Movie'
+    const renderedSubText = subtext ? `${subtext} ${type}` : type
 
     return (
         <div className="overlay flex flex-col grow w-full video-controls-container">
@@ -54,11 +62,26 @@ export const MediaPlayerControls = ({ mediaControls }: MediaControlProps) => {
             >
                 <Sheet className="flex flex-col grow min-h-[33.3%]">
                     <header className="flex items-center justify-between h-20 px-6 py-16 bg-linear-to-b from-gray-900 to-transparent absolute left-0 right-0 z-10">
-                        <div className="mx-2 flex grow flex-col justify-center">
-                            <h3 className="text-xl font-bold">{title}</h3>
-                            <h5 className="text-lg font-semibold">
-                                {subtitle}
-                            </h5>
+                        <div className="flex flex-row items-center">
+                            <Button
+                                variant="light"
+                                as={Link}
+                                href={backLink}
+                                radius="full"
+                            >
+                                <ArrowLeft
+                                    size="24"
+                                    style={{ fill: 'var(--background)' }}
+                                />
+                            </Button>
+                            <div className="mx-2 flex grow flex-col justify-center">
+                                <h3 className="text-xl font-bold text-white">
+                                    {title}
+                                </h3>
+                                <h5 className="text-lg font-semibold text-white">
+                                    {renderedSubText}
+                                </h5>
+                            </div>
                         </div>
                     </header>
                 </Sheet>
@@ -75,9 +98,9 @@ export const MediaPlayerControls = ({ mediaControls }: MediaControlProps) => {
                         <div className="flex flex-col grow justify-center px-3">
                             <Progress mediaControls={mediaControls} />
                         </div>
-                        <MediaPlayerSubtitleButton
+                        {/* <MediaPlayerSubtitleButton
                             mediaControls={mediaControls}
-                        />
+                        /> */}
                         <MediaPlayerVolumeButton
                             mediaControls={mediaControls}
                             onClick={toggleMute}

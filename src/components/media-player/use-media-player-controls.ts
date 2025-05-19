@@ -18,6 +18,13 @@ export type MediaControlProps = {
     mediaControls: ReturnType<typeof useMediaPlayerControls>
 }
 
+export type TitleMetadata = {
+    title: string
+    subtext: string
+    type: string
+    backLink: string
+}
+
 export type MediaButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
     MediaControlProps
 

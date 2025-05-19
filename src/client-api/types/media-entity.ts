@@ -18,6 +18,10 @@ export type Metadata = {
     stillPath?: string
     trailerLink?: string
     language?: string
+    watchStats?: {
+        lastWatchedAt?: Date
+        progress?: number
+    }
 }
 
 export type MediaEntity = {

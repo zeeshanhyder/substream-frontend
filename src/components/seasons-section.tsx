@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tabs, Tab, ScrollShadow } from "@heroui/react"
+import { Tabs, Tab, ScrollShadow } from '@heroui/react'
 import Sheet from './sheet'
 import MovieCard from './movie-title-card'
 

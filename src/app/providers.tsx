@@ -18,7 +18,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
                 }}
             >
                 <UserSessionStoreProvider>
-                    <main className="flex flex-col grow light text-foreground bg-background">
+                    <main
+                        className="flex flex-col grow bg-background"
+                        style={{ backgroundColor: 'var(--background)' }}
+                    >
                         {children}
                     </main>
                 </UserSessionStoreProvider>

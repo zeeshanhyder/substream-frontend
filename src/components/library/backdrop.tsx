@@ -1,11 +1,5 @@
 'use client'
-import {
-    createContext,
-    ReactNode,
-    useContext,
-    useEffect,
-    useState,
-} from 'react'
+import { useEffect, useState } from 'react'
 import {
     SelectedMediaTitle,
     useCurrentSelectedTitle,
@@ -22,6 +16,10 @@ export function Backdrop() {
         }, 0)
     }, [selectedTitle?.id])
 
+    if (!selectedTitle) {
+        return null
+    }
+
     const imagePath =
         selectedTitle?.metadata?.backdropImage ??
         selectedTitle?.metadata?.stillPath
@@ -32,7 +30,7 @@ export function Backdrop() {
     return (
         <>
             <div
-                className="absolute z-5 inset-0 max-h-[100vh] bg-fixed bg-center bg-cover"
+                className="px-[10vw] absolute z-5 inset-0 min-h-[100vh] min-w-[100vw] max-h-[100vh] bg-fixed bg-center bg-cover flex flex-col justify-center"
                 style={{
                     backgroundImage: imageUrl,
                     transition: 'all 1s ease-in-out',
@@ -46,16 +44,7 @@ export function Backdrop() {
                             'linear-gradient(0deg, #f8f7f2 15%, transparent 60%)',
                     }}
                 ></div>
-            </div>
-            <div
-                className="absolute z-15"
-                style={{
-                    backgroundImage: imageUrl,
-                    transition: 'all 1s ease-in-out',
-                    opacity: fadeIn,
-                }}
-            >
-                <SelectedMediaTitle />
+                <SelectedMediaTitle title={selectedTitle} />
             </div>
         </>
     )

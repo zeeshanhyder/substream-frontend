@@ -13,6 +13,9 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "incremental": true,
+        "sourceMap": true,
+        "inlineSources": true,
+        "inlineSourceMap": false,
         "plugins": [
             {
                 "name": "next"
@@ -23,6 +26,12 @@
             "@/*": ["./src/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "tailwind.config.ts.old"
+    ],
     "exclude": ["node_modules"]
 }

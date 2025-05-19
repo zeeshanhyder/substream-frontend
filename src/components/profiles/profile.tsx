@@ -1,35 +1,17 @@
 'use client'
-import { PersonaUser } from '@/api/persona'
+import { PersonaUser } from '@/client-api/persona'
 import { Heading1 } from '@/components/ui/typography'
-import { useUserSessionStore } from '@/providers/user-session-provider'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
 
-export const Profile = ({ profile }: { profile: PersonaUser }) => {
-    const router = useRouter()
-    const {
-        setAvatarUrl,
-        setEmailAddress,
-        setHomeDirectory,
-        setMediaPathList,
-        setUserFullName,
-        setUserId,
-    } = useUserSessionStore((state) => state)
-
-    const saveProfile = () => {
-        localStorage.setItem('profile', JSON.stringify(profile.id))
-        setAvatarUrl(profile.avatarUrl)
-        setEmailAddress(profile.emailAddress)
-        setHomeDirectory(profile.homeDirectory)
-        setMediaPathList(profile.mediaPathList)
-        setUserFullName(profile.fullName)
-        setUserId(profile.id)
-        router.push('/library')
-    }
-
+export const Profile = ({
+    profile,
+    saveProfile,
+}: {
+    profile: PersonaUser
+    saveProfile: (p: PersonaUser) => void
+}) => {
     return (
         <div
-            onClick={saveProfile}
+            onClick={() => saveProfile(profile)}
             className="flex flex-col mr-12 items-center text-center cursor-pointer"
         >
             <img

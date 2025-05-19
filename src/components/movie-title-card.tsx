@@ -1,4 +1,4 @@
-import { Card } from "@heroui/react"
+import { Card } from '@heroui/react'
 
 export type MovieCardProps = {
     title: string

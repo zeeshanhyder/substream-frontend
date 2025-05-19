@@ -1,8 +1,5 @@
 import { Suspense } from 'react'
-
-function DefaultFallback() {
-    return <div>Loading...</div>
-}
+import DefaultFallback from './default-fallback'
 
 export const withSuspense = (
     Component: () => Promise<React.JSX.Element>,

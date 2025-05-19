@@ -1,8 +1,8 @@
-import { WelcomeMessage } from './welcome-message'
-import { ContinueWatching } from './continue-watching-carousel'
-import { LibraryCarousel } from './library-carousel'
-import { Backdrop } from './backdrop'
-import { CurrentSelectedTitleProvider } from './selected-media-title'
+import { WelcomeMessage } from '@/components/library/welcome-message'
+import { ContinueWatching } from '@/components/library/continue-watching-carousel'
+import { LibraryCarousel } from '@/components/library/library-carousel'
+import { Backdrop } from '@/components/library/backdrop'
+import { CurrentSelectedTitleProvider } from '@/components/library/selected-media-title'
 
 export function LibraryExperience() {
     return (
@@ -15,12 +15,10 @@ export function LibraryExperience() {
                     <div
                         className="flex flex-col relative z-10"
                         style={{
-                            top: 'calc(100vh - 41%)',
+                            marginTop: 'calc(100vh - 41%)',
                         }}
                     >
                         <ContinueWatching />
-                        <LibraryCarousel />
-                        <LibraryCarousel />
                         <LibraryCarousel />
                     </div>
                 </div>

@@ -1,5 +1,6 @@
-import { MediaEntity } from '@/api/types/media-entity'
+import { MediaEntity } from '@/client-api/types/media-entity'
 import CarouselCard from './carousel-card'
+import Link from 'next/link'
 
 type TitleCarouselProps = {
     titles?: MediaEntity[] | null
@@ -9,7 +10,11 @@ export function TitleCarousel({ titles }: TitleCarouselProps) {
     if (!titles) return
 
     const titleCarousel = titles.map((title) => {
-        return <CarouselCard key={title.id} title={title}></CarouselCard>
+        return (
+            <Link key={title.id} href={`/title/${title.id}`}>
+                <CarouselCard title={title}></CarouselCard>
+            </Link>
+        )
     })
 
     return (

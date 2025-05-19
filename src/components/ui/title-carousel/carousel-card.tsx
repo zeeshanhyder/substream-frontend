@@ -1,4 +1,4 @@
-import { MediaEntity } from '@/api/types/media-entity'
+import { MediaEntity } from '@/client-api/types/media-entity'
 
 type CarouselCardProps = {
     title: MediaEntity

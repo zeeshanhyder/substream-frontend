@@ -1,5 +1,5 @@
-export const API_BASE_URL = 'http://localhost:7455/v1'
-export const serverFetch = async (
+export const API_BASE_URL = '/api'
+export const clientFetch = async (
     url: string | URL | globalThis.Request,
     init?: RequestInit
 ) => fetch(`${API_BASE_URL}${url}`, init)

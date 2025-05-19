@@ -45,18 +45,19 @@
     ::backdrop,
     ::file-selector-button {
         border-color: var(--color-gray-200, currentcolor);
+        transition: all 0.3s ease-in-out;
     }
 }
 
 :root {
     --background: #f8f7f2; /* Eggshell white */
-    --foreground: #3a3730; /* Warm dark brown */
+    --foreground: #080807; /* Warm dark brown */
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #f8f7f2; /* Keep eggshell even in dark mode preference */
-        --foreground: #3a3730;
+        --foreground: #080807;
     }
 }
 

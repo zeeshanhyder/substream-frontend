@@ -1,11 +1,13 @@
-import { getMedia } from '@/api/persona'
 import { TitleCarousel } from '@/components/ui/title-carousel/title-carousel'
 import { TextCustom } from '@/components/ui/typography'
+import { getCurrentUserId } from '@/lib/session'
+import { getUserMedia } from '@/server-api/get-user-media'
 import { withSuspense } from '@/utils/with-suspense'
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
 
 async function LibraryCarouselComponent() {
-    const { data: mediaTitles } = await getMedia('2plT7NnugdweKWvAKGeWa')
+    const userId = await getCurrentUserId()
+    const { data: mediaTitles } = await getUserMedia(userId)
 
     return (
         <div className="flex flex-col mt-[2vmax]">

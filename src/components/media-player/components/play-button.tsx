@@ -3,7 +3,7 @@ import {
     MediaButtonProps,
     MediaPlayerState,
 } from '../use-media-player-controls'
-import { Spinner } from "@heroui/react"
+import { Spinner } from '@heroui/react'
 
 export default function MediaPlayButton({
     mediaControls,

@@ -1,4 +1,4 @@
-import { serverFetch } from '../config/config'
+import { clientFetch } from '../config/config'
 import { MediaEntity } from '../types/media-entity'
 import { APIResponse, HTTPStatus } from '../types/service-response'
 import { WatchHistoryEntry } from '../types/watch-history'
@@ -16,7 +16,7 @@ export const getProfiles = async (): Promise<
     APIResponse<PersonaUser[] | null>
 > => {
     try {
-        const profilesRequest = await serverFetch('/persona/users')
+        const profilesRequest = await clientFetch('/persona/users')
         return await profilesRequest.json()
     } catch (err) {
         console.log(err)
@@ -28,12 +28,12 @@ export const getProfiles = async (): Promise<
     }
 }
 
-export const getWatchHistory = async (): Promise<
-    APIResponse<WatchHistoryEntry[] | null>
-> => {
+export const getWatchHistory = async (
+    userId: string
+): Promise<APIResponse<WatchHistoryEntry[] | null>> => {
     try {
-        const watchHistoryRequest = await serverFetch(
-            '/persona/2plT7NnugdweKWvAKGeWa/watch'
+        const watchHistoryRequest = await clientFetch(
+            `/persona/${userId}/watch`
         )
         return await watchHistoryRequest.json()
     } catch (err) {
@@ -46,12 +46,31 @@ export const getWatchHistory = async (): Promise<
     }
 }
 
+export const getMediaWatchHistory = async (
+    mediaId: string,
+    userId: string
+): Promise<APIResponse<WatchHistoryEntry | null>> => {
+    try {
+        const watchHistoryRequest = await clientFetch(
+            `/persona/${userId}/watch/${mediaId}`
+        )
+        return await watchHistoryRequest.json()
+    } catch (err) {
+        console.log(err)
+        return {
+            error: 'Failed to fetch watch history for media',
+            status: HTTPStatus.INTERNAL_SERVER_ERROR,
+            data: null,
+        }
+    }
+}
+
 export const getMediaById = async (
     userId: string,
     mediaId: string
 ): Promise<APIResponse<MediaEntity | null>> => {
     try {
-        const mediaTitle = await serverFetch(
+        const mediaTitle = await clientFetch(
             `/persona/${userId}/media/${mediaId}`
         )
         return await mediaTitle.json()
@@ -69,7 +88,7 @@ export const getMedia = async (
     userId: string
 ): Promise<APIResponse<MediaEntity[] | null>> => {
     try {
-        const mediaTitle = await serverFetch(`/persona/${userId}/media/`)
+        const mediaTitle = await clientFetch(`/persona/${userId}/media/`)
         return await mediaTitle.json()
     } catch (err) {
         console.log(err)

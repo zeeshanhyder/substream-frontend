@@ -15,30 +15,32 @@
         "format": "prettier --write --ignore-unknown \"src/**/*.{js,jsx,ts,tsx,css,scss,md}\""
     },
     "dependencies": {
-        "@eyevinn/web-player-core": "^0.15.3",
-        "@heroui/react": "^2.8.0-beta.4",
+        "@eyevinn/web-player-core": "^0.16.2",
+        "@heroui/react": "^2.8.0-beta.5",
         "@phosphor-icons/react": "^2.1.7",
         "framer-motion": "^12.9.4",
-        "next": "^15.3.1",
+        "jose": "^6.0.11",
+        "next": "^15.3.2",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
-        "tailwind-merge": "^3.2.0",
-        "zustand": "^5.0.3"
+        "server-only": "^0.0.1",
+        "tailwind-merge": "^3.3.0",
+        "zustand": "^5.0.4"
     },
     "devDependencies": {
-        "@eslint/eslintrc": "^3",
+        "@eslint/eslintrc": "^3.3.1",
         "@tailwindcss/postcss": "^4.1.5",
         "@types/node": "^22",
         "@types/react": "^19",
         "@types/react-dom": "^19",
-        "eslint": "^9",
-        "eslint-config-next": "15.1.1",
-        "eslint-config-prettier": "^9.1.0",
+        "eslint": "^9.27.0",
+        "eslint-config-next": "15.3.2",
+        "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-unused-imports": "^4.1.4",
-        "postcss": "^8",
-        "prettier": "^3.4.2",
+        "postcss": "^8.5.3",
+        "prettier": "^3.5.3",
         "tailwindcss": "^4.1.5",
-        "typescript": "^5"
+        "typescript": "^5.8.3"
     },
     "lint-staged": {
         "**/*": "./node_modules/.bin/prettier --write --ignore-unknown"

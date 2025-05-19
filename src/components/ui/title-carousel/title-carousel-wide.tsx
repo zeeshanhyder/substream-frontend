@@ -1,8 +1,10 @@
 'use client'
-import { MediaEntity } from '@/api/types/media-entity'
+import { MediaEntity } from '@/client-api/types/media-entity'
 import { BodySmall } from '../typography'
-import { useCurrentSelectedTitle } from '@/experiences/library/selected-media-title'
+import { useCurrentSelectedTitle } from '@/components/library/selected-media-title'
 import { useEffect } from 'react'
+import { Progress } from '@heroui/react'
+import Link from 'next/link'
 
 type CarouselProps = {
     titles: MediaEntity[]
@@ -14,15 +16,15 @@ type CarouselCardProps = {
 
 function CarouselCardWide({ title }: CarouselCardProps) {
     const { setTitle } = useCurrentSelectedTitle()
-    let dbImage = title.metadata?.stillPath ?? title.metadata?.posterImage
-    if (!dbImage) {
-        dbImage = 'https://placehold.co/300x180?text=M'
+    let coverImage = title.metadata?.stillPath ?? title.metadata?.posterImage
+    if (!coverImage) {
+        coverImage = 'https://placehold.co/300x180?text=M'
     } else {
-        dbImage = `https://image.tmdb.org/t/p/w500${dbImage}`
+        coverImage = `https://image.tmdb.org/t/p/w500${coverImage}`
     }
     const mediaName = title.mediaTitle ?? title.metadata?.title
     return (
-        <>
+        <Link href={`/watch/${title.id}`}>
             <div
                 role="button"
                 tabIndex={0}
@@ -32,20 +34,24 @@ function CarouselCardWide({ title }: CarouselCardProps) {
             >
                 <div
                     key={title.id}
-                    className="min-w-[350px] max-w-[350px] w-[350px] h-[200px] min-h-[200px] bg-[#fff] flex flex-col rounded-lg mr-3 cursor-pointer bg-cover"
+                    className="min-w-[350px] max-w-[350px] w-[350px] h-[200px] min-h-[200px] bg-[#fff] flex flex-col-reverse rounded-lg mr-3 cursor-pointer bg-cover"
                     data-name={mediaName}
                     style={{
-                        backgroundImage: `url(${dbImage})`,
+                        backgroundImage: `url(${coverImage})`,
                         boxShadow: '1px 1px 2px #ccc',
                     }}
                 >
-                    <div className="flex flex-row"></div>
+                    <Progress
+                        className="h-[8px]"
+                        color="warning"
+                        value={title?.metadata?.watchStats?.progress}
+                    />
                 </div>
                 <BodySmall className="mt-2 font-[500] max-w-[350px]">
                     {title.metadata?.title}
                 </BodySmall>
             </div>
-        </>
+        </Link>
     )
 }
 

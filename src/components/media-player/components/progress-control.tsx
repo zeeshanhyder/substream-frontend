@@ -1,7 +1,7 @@
 import Sheet from '@/components/sheet'
 import { useState, useEffect } from 'react'
 import { MediaButtonProps } from '../use-media-player-controls'
-import { Progress as ProgressBar } from "@heroui/react"
+import { Progress as ProgressBar } from '@heroui/react'
 
 export default function Progress({ mediaControls }: MediaButtonProps) {
     const {

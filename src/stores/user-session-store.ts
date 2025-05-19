@@ -1,4 +1,4 @@
-import { PersonaUser } from '@/api/persona'
+import { PersonaUser } from '@/client-api/persona'
 import { createStore } from 'zustand/vanilla'
 import { persist, createJSONStorage } from 'zustand/middleware'
 

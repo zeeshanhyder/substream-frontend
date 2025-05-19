@@ -11,12 +11,22 @@ type MediaPlayerProps = {
     src: string
     thumbnailSrc: string
     startTime?: number
+    smartStream?: boolean
+    title: string
+    subtext: string
+    type: string
+    titleId: string
 }
 
 export default function MediaPlayer({
     src: mediaSource,
     thumbnailSrc,
     startTime,
+    smartStream,
+    title,
+    subtext,
+    type = 'Movie',
+    titleId,
 }: MediaPlayerProps) {
     const videoPlayerRef: Ref<HTMLVideoElement | null> = useRef(null)
     const mediaControls = useMediaPlayerControls(videoPlayerRef, startTime)
@@ -28,17 +38,17 @@ export default function MediaPlayer({
             videoPlayerRef.current.canPlayType('application/vnd.apple.mpegurl')
         ) {
             videoPlayerRef.current.src = mediaSource
-        } else if (Hls.isSupported()) {
+        } else if (Hls.isSupported() && smartStream === true) {
             const hls = new Hls()
             hls.loadSource(mediaSource)
             hls.attachMedia(videoPlayerRef.current)
         } else {
-            console.error('HLS is not supported')
+            console.log('Smart stream not enabled for this video')
         }
     }
 
     return (
-        <div className="relative flex flex-col grow min-[1024px]:min-h-[80%] min-[320px]:min-h-[50%] media-player">
+        <div className="relative flex flex-col grow min-[1024px]:min-h-[80%] min-[320px]:min-h-[50%] media-player z-40">
             <Script
                 src="https://cdn.jsdelivr.net/npm/hls.js@1"
                 onReady={onReadyHandler}
@@ -52,19 +62,23 @@ export default function MediaPlayer({
                     poster={thumbnailSrc}
                     src={mediaSource}
                     playsInline={true}
+                    autoPlay={true}
                     crossOrigin="anonymous"
                     preload="metadata"
-                >
-                    <track
-                        label="Subtitles"
-                        kind="subtitles"
-                        srcLang="en"
-                        src="http://localhost:8080/subtitles.vtt"
-                    ></track>
-                </video>
-                <MediaPlayerControls mediaControls={mediaControls} />
+                ></video>
+                <MediaPlayerControls
+                    title={title}
+                    subtext={subtext}
+                    type={type}
+                    mediaControls={mediaControls}
+                    backLink={`/title/${titleId}`}
+                />
             </div>
-            <ContentBanner mediaControls={mediaControls} src={thumbnailSrc} />
+            <ContentBanner
+                backLink={`/title/${titleId}`}
+                mediaControls={mediaControls}
+                src={thumbnailSrc}
+            />
         </div>
     )
 }

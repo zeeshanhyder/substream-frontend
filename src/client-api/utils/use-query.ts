@@ -8,7 +8,11 @@ type QueryResult<T> = {
     loading: boolean
 }
 
-export const useQuery = <T extends unknown, U>(
+type LazyQueryResult<T> = QueryResult<T> & {
+    query: () => void
+}
+
+export const useQuery = <T, U>(
     query: (args: T) => Promise<APIResponse<U>>
 ): QueryResult<U> => {
     const [data, setData] = useState<U | null>(null)
@@ -38,5 +42,39 @@ export const useQuery = <T extends unknown, U>(
         error,
         status,
         loading,
+    }
+}
+
+export const useLazyQueryQuery = <U>(
+    queryCb: () => Promise<APIResponse<U>>
+): LazyQueryResult<U> => {
+    const [data, setData] = useState<U | null>(null)
+    const [error, setError] = useState<string | null>(null)
+    const [status, setStatus] = useState<HTTPStatus | null>(null)
+    const [loading, setIsLoading] = useState<boolean>(false)
+
+    const query = () => {
+        setIsLoading(true)
+        queryCb()
+            .then((response) => {
+                setData(response.data ?? null)
+                setError(response.error ?? null)
+                setStatus(response.status ?? null)
+            })
+            .catch((err) => {
+                setError(err.message)
+                setStatus(HTTPStatus.INTERNAL_SERVER_ERROR)
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+    }
+
+    return {
+        data,
+        error,
+        status,
+        loading,
+        query,
     }
 }

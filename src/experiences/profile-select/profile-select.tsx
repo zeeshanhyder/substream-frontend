@@ -1,29 +1,12 @@
-import { getProfiles, PersonaUser } from '@/api/persona'
-import { Profiles } from '@/components/profiles/profiles'
-import { ServerToast } from '@/components/ui/toast/server-toast'
 import { ExperienceHeading, TextCustom } from '@/components/ui/typography'
 import { withSuspense } from '@/utils/with-suspense'
+import { ProfilesContainer } from './profiles-container'
+import AvatarFallback from '@/utils/avatar-skeleton'
 
-async function ProfilesContainer() {
-    const { data, error } = await getProfiles()
-    if (error) {
-        return (
-            <ServerToast
-                title="Error"
-                toastMessage="Unable to load profiles"
-                color="danger"
-                variant="solid"
-            />
-        )
-    }
-    return (
-        <div className="flex flex-row items-center h-1/2">
-            <Profiles profiles={data} />
-        </div>
-    )
-}
-
-const ProfilesContainerSuspense = withSuspense(ProfilesContainer)
+const ProfilesContainerSuspense = withSuspense(
+    ProfilesContainer,
+    AvatarFallback
+)
 
 export default function ProfileSelectExperience() {
     return (
@@ -34,7 +17,9 @@ export default function ProfileSelectExperience() {
                     Who is watching?
                 </TextCustom>
             </div>
-            <ProfilesContainerSuspense />
+            <div className="flex flex-row items-center h-1/2">
+                <ProfilesContainerSuspense />
+            </div>
         </div>
     )
 }

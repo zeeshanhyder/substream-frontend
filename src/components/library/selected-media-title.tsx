@@ -1,10 +1,15 @@
 'use client'
-import { MediaEntity } from '@/api/types/media-entity'
+import { MediaEntity } from '@/client-api/types/media-entity'
 import { useContext, ReactNode, useState, createContext } from 'react'
 import { getTmdbImg } from '@/utils/get-tmdb-img'
 import { TextCustom } from '@/components/ui/typography'
-import { Button } from '@heroui/react'
-import { ClockClockwise, Play, PlusCircle } from '@phosphor-icons/react'
+import { Button, Link } from '@heroui/react'
+import {
+    MonitorArrowUp,
+    MonitorPlay,
+    Play,
+    PlusCircle,
+} from '@phosphor-icons/react'
 
 const content = {
     goto: 'Go to Show',
@@ -46,63 +51,48 @@ export function CurrentSelectedTitleProvider({
     )
 }
 
-const MediaTitle = ({ title }: { title?: MediaEntity }) => {
+export const MediaTitle = ({ title }: { title?: MediaEntity }) => {
     const titleImage = title?.metadata?.titleImage
 
     if (titleImage) {
         return (
-            <div
-                style={{
-                    backgroundImage: `url(${getTmdbImg(titleImage, 'w300')})`,
-                    backgroundSize: '50%',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'bottom left',
-                }}
-                className="w-[500px] h-[100px] bg-cover"
-            />
+            <img src={getTmdbImg(titleImage, 'w300')} className="w-[200px]" />
         )
     }
     return (
         <TextCustom
             className="text-4xl max-w-[200px] text-[#eee]"
-            style={{ textShadow: '1px 1px 1px #999' }}
+            style={{ textShadow: '0 0 10px #000' }}
         >
             {title?.metadata?.title ?? title?.mediaTitle}
         </TextCustom>
     )
 }
 
-export const SelectedMediaTitle = () => {
-    const { selectedTitle } = useCurrentSelectedTitle()
-    const mediaName =
-        selectedTitle?.mediaTitle ?? selectedTitle?.metadata?.title
+export const SelectedMediaTitle = ({ title }: { title: MediaEntity }) => {
+    const mediaName = title?.mediaTitle ?? title?.metadata?.title
     return (
-        <div className="flex flex-col mb-5 absolute z-20">
-            <MediaTitle title={selectedTitle} />
+        <div className="mb-5 absolute z-20 mt-[-20vh]">
+            <MediaTitle title={title} />
             <TextCustom
-                className="text-xl text-[#eee] max-w-[500px] font-normal mt-5 line-clamp-4"
-                style={{ textShadow: '0 0 5px rgba(32,32,32,0.8)' }}
+                className="text-xl text-[#eee] max-w-[500px] font-normal mt-5 line-clamp-4 text-shadow-2xl"
+                style={{ textShadow: '0 0 2px var(--foreground)' }}
             >
-                {selectedTitle?.metadata?.summary}
+                {title?.metadata?.summary}
             </TextCustom>
             <div className="flex flex-row mt-5">
                 <Button
+                    href={`/title/${title.id}`}
+                    as={Link}
                     aria-label={`Resume watching ${mediaName}`}
-                    className="mt-5 w-[250px] rounded-full shadow-xl"
+                    className="mt-5 w-[200px] rounded-full shadow-xl flex row justify-between"
                     variant="solid"
+                    color="secondary"
                 >
-                    <Play size={20} />
-                    <span className="font-[500]">{content.goto}</span>
-                </Button>
-                <Button
-                    variant="bordered"
-                    style={{ color: '#f0f0f0' }}
-                    className="ml-5 mt-5 border-none rounded-full"
-                >
-                    <PlusCircle size={20} color="#f0f0f0" />
-                    <span className="font-[500] color-[#000]">
-                        {content.addTo}
+                    <span className="font-semibold text-[var(--background)]">
+                        {content.goto}
                     </span>
+                    <MonitorPlay size={20} color="var(--background)" />
                 </Button>
             </div>
         </div>
