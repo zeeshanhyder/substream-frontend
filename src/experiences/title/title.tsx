@@ -120,9 +120,8 @@ const RenderTitle = ({
                     </div>
                 </div>
             </div>
-            <div className="min-h-[20vh] px-[10vw] pt-10">
-                <Episodes title={title} />
-            </div>
+            <Episodes title={title} />
+
             <YoutubeScript videoId={ytId} />
         </div>
     )

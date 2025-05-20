@@ -1,8 +1,12 @@
 import { MediaEntity } from '@/client-api/types/media-entity'
+import { useLazyQuery } from '@/client-api/utils/use-query'
 import { BodySmall, TextCustom } from '@/components/ui/typography'
+import { useUserSessionStore } from '@/providers/user-session-provider'
+import { getMediaById } from '@/server-api/get-media-by-id'
 import { getTmdbImg } from '@/utils/get-tmdb-img'
 import { Tabs, Tab, Card } from '@heroui/react'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 type EpisodesProps = {
     title: MediaEntity
@@ -35,22 +39,40 @@ function EpisodeTab({ episode }: EpisodeTabProps) {
     )
 }
 
-type EpisodesTabProps = {
-    episodes: MediaEntity[]
-    seasonName: string
-}
-
-export default function Episodes({ title }: EpisodesProps) {
-    const category = title.category
+export default function Episodes({ title: showDetails }: EpisodesProps) {
+    const shouldFetchEpisodeParent = !!showDetails.parent?.id
+    const category = showDetails.category
+    const userId = useUserSessionStore((store) => store.id)
+    const {
+        data: parentTitle,
+        loading,
+        query: fetchEpisodeParent,
+    } = useLazyQuery(() => getMediaById(userId, showDetails?.parent?.id ?? ''))
 
     if (category === 'MOVIE') {
         return null
     }
 
+    useEffect(() => {
+        if (shouldFetchEpisodeParent) {
+            fetchEpisodeParent()
+        }
+    }, [])
+
+    if (loading) {
+        return <div>Loading...</div>
+    }
+    const title = shouldFetchEpisodeParent ? parentTitle : showDetails
+    const hasEpisodes = (title?.seasons?.length ?? 0) > 0
+
+    if (!hasEpisodes) return null
+
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col min-h-[20vh] px-[10vw] pt-10">
             <TextCustom className="text-2xl">
-                {content.watchMore(title?.metadata?.title ?? '')}
+                {content.watchMore(
+                    title?.metadata?.title ?? title?.mediaTitle ?? ''
+                )}
             </TextCustom>
             <div className="mt-5">
                 <Tabs variant="underlined">

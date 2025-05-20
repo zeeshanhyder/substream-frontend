@@ -43,4 +43,5 @@ export type MediaEntity = {
     category: 'MOVIE' | 'TV'
     metadata?: Metadata
     userId: string
+    parent?: MediaEntity
 }

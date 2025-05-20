@@ -45,7 +45,7 @@ export const useQuery = <T, U>(
     }
 }
 
-export const useLazyQueryQuery = <U>(
+export const useLazyQuery = <U>(
     queryCb: () => Promise<APIResponse<U>>
 ): LazyQueryResult<U> => {
     const [data, setData] = useState<U | null>(null)

@@ -6,7 +6,7 @@ import { getCurrentUserId } from '@/lib/session'
 import { getMediaById } from '@/server-api/get-media-by-id'
 import { getWatchHistory } from '@/server-api/get-watch-history'
 import { withSuspense } from '@/utils/with-suspense'
-import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
+import { CaretRight } from '@phosphor-icons/react'
 
 const content = {
     continueWatching: 'Continue Watching',
@@ -43,7 +43,6 @@ async function ContinueWatchingComponent() {
                 <TextCustom className="text-2xl">
                     {content.continueWatching}
                 </TextCustom>
-                <ArrowRight size={24} weight="bold" />
             </div>
             <TitleCarouselWide titles={parsedTitles} />
         </div>

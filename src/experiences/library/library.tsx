@@ -15,7 +15,7 @@ export function LibraryExperience() {
                     <div
                         className="flex flex-col relative z-10"
                         style={{
-                            marginTop: 'calc(100vh - 41%)',
+                            marginTop: 'calc(100vh - 66vh)',
                         }}
                     >
                         <ContinueWatching />
