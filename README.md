@@ -1,9 +1,28 @@
-# Substream
+<img width="1792" alt="Screenshot 2025-06-16 at 10 25 53 AM" src="https://github.com/user-attachments/assets/037e5601-0f9d-4298-ac2c-552ee6dc675c" /># Substream
 
 Substream is a comprehensive locally hosted and managed full streaming platform, designed to process, organize, and stream your media library. This frontend provides a user-friendly interface to interact with the media managed by the Substream backend.
 
 ## Demo
 [Substream working demo](https://jumpshare.com/s/TyEK7qb2jhaKC7AYm3Yg)
+
+## UI
+
+### Profile selection page
+<img width="1404" alt="Screenshot 2025-06-16 at 10 21 11 AM" src="https://github.com/user-attachments/assets/b5e9872c-02e4-4f53-8b6f-5916f90aee85" />
+
+### Home Experience
+<img width="1791" alt="Screenshot 2025-06-16 at 10 22 46 AM" src="https://github.com/user-attachments/assets/3b429cd6-425b-4d1b-9434-e02f5e688cb8" />
+
+### Recently Watched Experience
+<img width="1792" alt="Screenshot 2025-06-16 at 10 24 01 AM" src="https://github.com/user-attachments/assets/264ddd2b-dba9-4579-a6a6-9083a45eca32" />
+<img width="1791" alt="Screenshot 2025-06-16 at 10 26 18 AM" src="https://github.com/user-attachments/assets/55a52ec8-d816-41b6-90eb-7653c62c6c42" />
+
+
+### Media Details Experience
+<img width="1792" alt="Screenshot 2025-06-16 at 10 26 56 AM" src="https://github.com/user-attachments/assets/33650f1f-32f9-4902-9893-65920dfd755e" />
+
+### Media Player Experience
+<img width="1781" alt="Screenshot 2025-06-16 at 10 29 57 AM" src="https://github.com/user-attachments/assets/c5cc65d7-3b3f-4145-8d16-8db67eb90ffd" />
 
 ## Tech Stack
 
