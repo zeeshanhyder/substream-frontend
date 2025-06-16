@@ -1,4 +1,6 @@
-<img width="1792" alt="Screenshot 2025-06-16 at 10 25 53 AM" src="https://github.com/user-attachments/assets/037e5601-0f9d-4298-ac2c-552ee6dc675c" /># Substream
+<img width="1792" alt="Screenshot 2025-06-16 at 10 25 53 AM" src="https://github.com/user-attachments/assets/037e5601-0f9d-4298-ac2c-552ee6dc675c" />
+
+# Substream
 
 Substream is a comprehensive locally hosted and managed full streaming platform, designed to process, organize, and stream your media library. This frontend provides a user-friendly interface to interact with the media managed by the Substream backend.
 
