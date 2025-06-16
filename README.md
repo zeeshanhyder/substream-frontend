@@ -1,6 +1,9 @@
-# Substream Frontend
+# Substream
 
-Substream Frontend is the frontend application for the Substream Media Processor, a comprehensive media management system designed to process, organize, and stream your media library. This frontend provides a user-friendly interface to interact with the media managed by the Substream backend.
+Substream is a comprehensive locally hosted and managed full streaming platform, designed to process, organize, and stream your media library. This frontend provides a user-friendly interface to interact with the media managed by the Substream backend.
+
+## Demo
+[Substream working demo](https://jumpshare.com/s/TyEK7qb2jhaKC7AYm3Yg)
 
 ## Tech Stack
 
